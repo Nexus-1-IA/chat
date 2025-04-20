@@ -1,0 +1,1491 @@
+<html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus AI Chat - Suscripción Premium</title>
+    <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&amp;family=Rajdhani:wght@400;500;600;700&amp;family=Titillium+Web:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            /* Base colors */
+            --bg-primary: #0a0c1c;
+            --bg-secondary: #131629;
+            --bg-tertiary: #1c2138;
+            --text-primary: #e6e9f4;
+            --text-secondary: #8b93b2;
+            --border-color: #2a3052;
+            
+            /* Accent colors */
+            --accent-primary: #2171fd;
+            --accent-secondary: #7a4dfe;
+            
+            /* Utility colors */
+            --success-color: #26cb6c;
+            --danger-color: #f45b69;
+            --warning-color: #ffc107;
+            
+            /* Special effects */
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --glow-color: rgba(0, 100, 255, 0.2);
+            
+            /* Gradients */
+            --gradient-bg: linear-gradient(135deg, #0a0c1c 0%, #1a1c3a 100%);
+            
+            /* Premium Content */
+            --premium-content-bg: rgba(20, 22, 42, 0.7);
+            
+            /* Input background */
+            --input-bg: rgba(12, 15, 28, 0.7);
+        }
+        
+        [data-theme="light"] {
+            --bg-primary: #f0f2f8;
+            --bg-secondary: #e6e9f4;
+            --bg-tertiary: #d8dced;
+            --text-primary: #1e2138;
+            --text-secondary: #4a5070;
+            --border-color: #c7cce0;
+            
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --glow-color: rgba(0, 100, 255, 0.1);
+            
+            --gradient-bg: linear-gradient(135deg, #e6e9f4 0%, #f0f2f8 100%);
+            
+            --premium-content-bg: rgba(240, 242, 248, 0.7);
+            --input-bg: rgba(230, 233, 244, 0.7);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html, body {
+            height: 100%;
+            font-family: 'Titillium Web', sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Animated background gradient */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-bg);
+            z-index: -2;
+            opacity: 0.8;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        
+        /* Particle/grid background effect */
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(rgba(0, 200, 255, 0.1) 2px, transparent 2px),
+                radial-gradient(rgba(122, 77, 254, 0.07) 2px, transparent 2px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            animation: floatingGrid 120s linear infinite;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        @keyframes floatingGrid {
+            0% { background-position: 0 0, 25px 25px; }
+            100% { background-position: 1000px 1000px, 1025px 1025px; }
+        }
+        
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        header {
+            background-color: var(--bg-secondary);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px var(--shadow-color);
+            z-index: 10;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            position: relative;
+        }
+        
+        .logo h1::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            color: var(--accent-primary);
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px solid var(--accent-primary);
+            box-shadow: inset 0 0 5px var(--glow-color);
+            border-radius: 6px;
+            opacity: 0.7;
+            z-index: -1;
+            animation: pulseBorder 2s infinite;
+        }
+        
+        @keyframes pulseBorder {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .btn {
+            background-color: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+        
+        .btn.theme-toggle {
+            background-color: var(--bg-tertiary);
+            width: 40px;
+            height: 40px;
+        }
+        
+        .btn.back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-primary);
+            border: 1px solid var(--accent-primary);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-family: 'Orbitron', sans-serif;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            background-color: rgba(33, 113, 253, 0.1);
+        }
+        
+        .btn.back-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 200, 255, 0.1), transparent);
+            z-index: -1;
+        }
+        
+        .btn.back-btn:hover {
+            background-color: var(--accent-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+        
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .premium-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 16px;
+            background-color: rgba(20, 22, 42, 0.7);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(33, 113, 253, 0.05), rgba(122, 77, 254, 0.05));
+            z-index: -1;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-card {
+            background-color: rgba(20, 22, 42, 0.7);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--shadow-color);
+            border-color: var(--accent-primary);
+        }
+        
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background-color: rgba(33, 113, 253, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .feature-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            border: 1px solid var(--accent-primary);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon::before {
+            opacity: 1;
+            transform: scale(1.2);
+            box-shadow: 0 0 15px var(--glow-color);
+        }
+        
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .pricing-section {
+            padding: 2rem;
+            background-color: rgba(20, 22, 42, 0.7);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(33, 113, 253, 0.05), rgba(122, 77, 254, 0.05));
+            z-index: -1;
+        }
+        
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        .pricing-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .pricing-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .pricing-plan {
+            background-color: rgba(26, 29, 52, 0.7);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .pricing-plan:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow-color);
+            border-color: var(--accent-primary);
+        }
+        
+        .pricing-plan-header {
+            padding: 1.5rem;
+            background-color: rgba(33, 113, 253, 0.1);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-plan-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(33, 113, 253, 0.1), transparent);
+            pointer-events: none;
+        }
+        
+        .plan-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .currency {
+            font-size: 1.5rem;
+            margin-right: 0.2rem;
+            color: var(--text-secondary);
+        }
+        
+        .period {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: normal;
+            margin-left: 0.5rem;
+        }
+        
+        .plan-description {
+            color: var(--text-secondary);
+            text-align: center;
+        }
+        
+        .pricing-plan-body {
+            padding: 1.5rem;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .plan-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed rgba(122, 77, 254, 0.2);
+        }
+        
+        .plan-feature:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-icon-small {
+            color: var(--accent-primary);
+            font-size: 1.1rem;
+        }
+        
+        .plan-cta {
+            margin-top: 1rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 1rem;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            transition: all 0.5s ease;
+            z-index: 1;
+        }
+        
+        .btn-primary:hover::before {
+            transform: rotate(30deg) translate(10%, 10%);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 0 20px var(--glow-color);
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        .payment-methods-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: rgba(20, 22, 42, 0.7);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+        
+        .payment-methods-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .payment-methods-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        .payment-methods-subtitle {
+            color: var(--text-secondary);
+        }
+        
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .payment-option {
+            background-color: rgba(26, 29, 52, 0.7);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .payment-option::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .payment-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--shadow-color);
+            border-color: var(--accent-primary);
+        }
+        
+        .payment-icon {
+            font-size: 2.5rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .payment-name {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .payment-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent-primary);
+            border: 2px solid var(--accent-primary);
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent-primary);
+            color: white;
+            box-shadow: 0 0 15px var(--glow-color);
+            transform: translateY(-2px);
+        }
+        
+        .faq-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: rgba(20, 22, 42, 0.7);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+        
+        .faq-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .faq-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        .faq-subtitle {
+            color: var(--text-secondary);
+        }
+        
+        .faq-list {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .faq-item {
+            background-color: rgba(26, 29, 52, 0.7);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: rgba(33, 113, 253, 0.1);
+        }
+        
+        .faq-question i {
+            font-size: 1.2rem;
+            color: var(--accent-primary);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 1.25rem;
+            max-height: 0;
+            overflow: hidden;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 1.25rem 1.25rem;
+            max-height: 500px;
+        }
+        
+        .cta-section {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 3rem;
+            background-color: rgba(33, 113, 253, 0.1);
+            border-radius: 16px;
+            border: 1px solid var(--accent-primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(135deg, rgba(33, 113, 253, 0.1), rgba(122, 77, 254, 0.1));
+            transform: rotate(45deg);
+            animation: ctaGlow 8s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes ctaGlow {
+            0% { transform: rotate(45deg) translateY(0); }
+            100% { transform: rotate(45deg) translateY(100%); }
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .cta-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        footer {
+            margin-top: 3rem;
+            background-color: var(--bg-secondary);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--accent-primary);
+        }
+        
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal {
+            background-color: var(--bg-secondary);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 5px 30px var(--shadow-color);
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+        
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.05em;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .close-modal:hover {
+            color: var(--text-primary);
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .payment-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .form-control {
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+        
+        .form-control:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 10px var(--glow-color);
+            outline: none;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .features-grid, .pricing-options, .payment-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-plan {
+                max-width: 100%;
+            }
+            
+            .cta-section {
+                padding: 2rem 1rem;
+            }
+            
+            .cta-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            main {
+                padding: 1rem;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .pricing-title, .payment-methods-title, .faq-title {
+                font-size: 1.5rem;
+            }
+            
+            .feature-card, .pricing-plan, .payment-option {
+                padding: 1rem;
+            }
+            
+            .btn-primary, .btn-outline {
+                padding: 0.75rem 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-robot"></i>
+            </div>
+            <h1>Nexus AI Chat</h1>
+        </div>
+        <div class="header-actions">
+            <button class="btn theme-toggle" title="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <a href="index.html" class="btn back-btn">
+                <i class="fas fa-arrow-left"></i>
+                <span>Volver</span>
+            </a>
+        </div>
+    </header>
+    
+    <main>
+        <div class="premium-container">
+            <section class="hero-section">
+                <h1 class="hero-title">Desbloquea el Poder Premium</h1>
+                <p class="hero-subtitle">Mejora tu experiencia de chat con funciones avanzadas que te ayudarán a obtener más de Nexus AI.</p>
+                <a href="#pricing" class="btn-primary">
+                    <i class="fas fa-crown"></i>
+                    Ver planes premium
+                </a>
+            </section>
+            
+            <section class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Respuestas más rápidas</h3>
+                    <p class="feature-description">Obtén acceso prioritario a Nexus para tiempos de respuesta más rápidos y eficientes, sin largas esperas.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-text-height"></i>
+                    </div>
+                    <h3 class="feature-title">Respuestas más largas</h3>
+                    <p class="feature-description">Recibe respuestas más detalladas y completas a tus consultas, sin límites de longitud en la interacción.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="feature-title">Temas personalizados</h3>
+                    <p class="feature-description">Personaliza tu interfaz de chat con temas exclusivos premium, adaptados a tu estilo y preferencias visuales.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3 class="feature-title">Historial de conversación</h3>
+                    <p class="feature-description">Accede y exporta tu historial completo de conversaciones en cualquier momento, sin perder información importante.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-export"></i>
+                    </div>
+                    <h3 class="feature-title">Exporta a múltiples formatos</h3>
+                    <p class="feature-description">Exporta tus conversaciones a PDF, Word, o formato de texto para guardarlo o compartirlo fácilmente.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title">Soporte prioritario</h3>
+                    <p class="feature-description">Obtén acceso directo a nuestro equipo de soporte para resolver cualquier problema o duda que puedas tener.</p>
+                </div>
+            </section>
+            
+            <section id="pricing" class="pricing-section">
+                <div class="pricing-header">
+                    <h2 class="pricing-title">Planes Premium</h2>
+                    <p class="pricing-subtitle">Elige el plan que mejor se adapte a tus necesidades</p>
+                </div>
+                
+                <div class="pricing-options">
+                    <div class="pricing-plan">
+                        <div class="pricing-plan-header">
+                            <h3 class="plan-name">Mensual</h3>
+                            <div class="plan-price">
+                                <span class="currency">$</span>1.99
+                                <span class="period">/ mes</span>
+                            </div>
+                            <p class="plan-description">Ideal para uso regular</p>
+                        </div>
+                        <div class="pricing-plan-body">
+                            <ul class="plan-features">
+                                <li class="plan-feature">
+                                    <i class="fas fa-check-circle feature-icon-small"></i>
+                                    <span>Todas las funciones premium</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-check-circle feature-icon-small"></i>
+                                    <span>Soporte prioritario</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-check-circle feature-icon-small"></i>
+                                    <span>Sin anuncios ni interrupciones</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-check-circle feature-icon-small"></i>
+                                    <span>Cancela cuando quieras</span>
+                                </li>
+                            </ul>
+                            <div class="plan-cta">
+                                <button class="btn-primary" id="checkout-monthly">
+                                    <i class="fas fa-crown"></i>
+                                    Suscribirse
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-plan">
+                        <div class="pricing-plan-header">
+                            <h3 class="plan-name">Anual</h3>
+                            <div class="plan-price">
+                                <span class="currency">$</span>21.99
+                                <span class="period">/ año</span>
+                            </div>
+                            <p class="plan-description">Ahorra un 25% con la suscripción anual</p>
+                        </div>
+                        <div class="pricing-plan-body">
+                            <ul class="plan-features">
+                                <li class="plan-feature">
+                                    <i class="fas fa-check-circle feature-icon-small"></i>
+                                    <span>Todas las funciones premium</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-check-circle feature-icon-small"></i>
+                                    <span>Soporte prioritario 24/7</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-check-circle feature-icon-small"></i>
+                                    <span>Sin anuncios ni interrupciones</span>
+                                </li>
+                                <li class="plan-feature">
+                                    <i class="fas fa-check-circle feature-icon-small"></i>
+                                    <span>Ahorro del 25% sobre tarifa mensual</span>
+                                </li>
+                            </ul>
+                            <div class="plan-cta">
+                                <button class="btn-primary" id="checkout-yearly">
+                                    <i class="fas fa-crown"></i>
+                                    Suscribirse
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="payment-methods-section">
+                <div class="payment-methods-header">
+                    <h2 class="payment-methods-title">Métodos de Pago</h2>
+                    <p class="payment-methods-subtitle">Ofrecemos múltiples opciones para tu comodidad</p>
+                </div>
+                
+                <div class="payment-options">
+                    <div class="payment-option">
+                        <div class="payment-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3 class="payment-name">Mercado Pago</h3>
+                        <p class="payment-description">Paga de forma segura utilizando tu cuenta de Mercado Pago con protección al consumidor.</p>
+                        <button class="btn-outline payment-method-select" data-method="mercadopago">
+                            <i class="fas fa-credit-card"></i>
+                            Pagar con Mercado Pago
+                        </button>
+                    </div>
+                    
+                    <div class="payment-option">
+                        <div class="payment-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h3 class="payment-name">Tarjeta de Crédito/Débito</h3>
+                        <p class="payment-description">Acepta todas las tarjetas principales como Visa, Mastercard, y American Express.</p>
+                        <button class="btn-outline payment-method-select" data-method="card">
+                            <i class="fas fa-credit-card"></i>
+                            Pagar con Tarjeta
+                        </button>
+                    </div>
+                    
+                    <div class="payment-option">
+                        <div class="payment-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h3 class="payment-name">Transferencia Bancaria</h3>
+                        <p class="payment-description">Transfiere el pago directamente a nuestra cuenta bancaria de forma segura.</p>
+                        <button class="btn-outline payment-method-select" data-method="transfer">
+                            <i class="fas fa-university"></i>
+                            Transferencia Bancaria
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="faq-section">
+                <div class="faq-header">
+                    <h2 class="faq-title">Preguntas Frecuentes</h2>
+                    <p class="faq-subtitle">Respuestas a las preguntas más comunes sobre nuestra suscripción premium</p>
+                </div>
+                
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>¿Cómo funciona la suscripción premium?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>La suscripción premium te brinda acceso a todas las funciones avanzadas de Nexus AI Chat, como respuestas más rápidas, respuestas más extensas, temas personalizados y exportación de conversaciones. Después de suscribirte, estas funciones se desbloquearán automáticamente en tu cuenta.</p>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>¿Qué métodos de pago aceptan?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Aceptamos Mercado Pago, todas las tarjetas de crédito y débito principales (Visa, Mastercard, American Express), y transferencias bancarias. Todos los pagos se procesan de forma segura a través de conexiones encriptadas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>¿Hay alguna política de reembolso?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Ofrecemos una garantía de devolución de dinero de 7 días. Si no estás satisfecho con tu suscripción premium por cualquier motivo, puedes solicitar un reembolso completo dentro de los primeros 7 días de tu suscripción.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>¿La suscripción se renueva automáticamente?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sí, todas las suscripciones se renuevan automáticamente al final del período de facturación. Recibirás una notificación por correo electrónico antes de que se procese cualquier cargo de renovación, y puedes cancelar la renovación automática en cualquier momento.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="cta-section">
+                <h2 class="cta-title">Potencia tu Experiencia de IA Hoy</h2>
+                <p class="cta-subtitle">Únete a miles de usuarios que han mejorado su experiencia con Nexus AI Chat Premium</p>
+                <a href="#pricing" class="btn-primary">
+                    <i class="fas fa-crown"></i>
+                    Comenzar ahora
+                </a>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Modal para transferencia bancaria -->
+    <div class="modal-overlay" id="transfer-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Detalles de Transferencia Bancaria</h2>
+                <button class="close-modal" id="close-transfer-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Por favor realiza la transferencia a la siguiente cuenta bancaria:</p>
+                <div class="payment-form">
+                    <div class="form-group">
+                        <label class="form-label">Alias para transferencia</label>
+                        <input type="text" class="form-control" value="Stack.740.autor.mp" readonly="">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Tipo de transferencia</label>
+                        <input type="text" class="form-control" value="Transferencia inmediata" readonly="">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Monto a transferir</label>
+                        <input type="text" class="form-control plan-amount" value="$9.99" readonly="">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Concepto/Referencia</label>
+                        <input type="text" class="form-control" value="Premium Gemini + [Tu Email]" readonly="">
+                    </div>
+                    <p>Una vez realizada la transferencia, envía captura de pantalla al WhatsApp <strong>+54 9 381 209-6455</strong> para activar inmediatamente tu suscripción premium.</p>
+                    <button class="btn-primary" id="copy-details">
+                        <i class="fas fa-copy"></i>
+                        Copiar detalles
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-logo">Nexus AI Chat</div>
+        <div class="footer-links">
+            <a href="#" class="footer-link">Términos de Servicio</a>
+            <a href="#" class="footer-link">Política de Privacidad</a>
+            <a href="#" class="footer-link">Contacto</a>
+            <a href="#" class="footer-link">Acerca de</a>
+            <a href="#" class="footer-link">Soporte</a>
+        </div>
+        <p class="copyright">© 2025 Nexus AI Chat. Todos los derechos reservados.</p>
+    </footer>
+    
+    <script>
+        // Alternar modo claro/oscuro
+        const themeToggle = document.querySelector('.theme-toggle');
+        const body = document.body;
+    
+        themeToggle.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        });
+    
+        // Alternancia de acordeón de FAQ
+        const faqItems = document.querySelectorAll('.faq-item');
+    
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(faqItem => faqItem.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+    
+        // Manejo de modales
+        const transferButtons = document.querySelectorAll('[data-method="transfer"]');
+        const transferModal = document.getElementById('transfer-modal');
+        const closeTransferModal = document.getElementById('close-transfer-modal');
+    
+        transferButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                transferModal.classList.add('active');
+            });
+        });
+    
+        closeTransferModal.addEventListener('click', () => {
+            transferModal.classList.remove('active');
+        });
+    
+        transferModal.addEventListener('click', (e) => {
+            if (e.target === transferModal) {
+                transferModal.classList.remove('active');
+            }
+        });
+    
+        // Botones de checkout
+        const checkoutMonthly = document.getElementById('checkout-monthly');
+        const checkoutYearly = document.getElementById('checkout-yearly');
+    
+        checkoutMonthly.addEventListener('click', () => {
+            const planMensual = {
+                monto: 1.99,
+                titulo: "Plan Premium Mensual - Nexus AI Chat",
+                alias: "Stack.740.autor.mp",
+                plan: "mensual"
+            };
+            transferModal.classList.add('active');
+            document.querySelector('.plan-amount').value = `$${planMensual.monto}`;
+        });
+    
+        checkoutYearly.addEventListener('click', () => {
+            const planAnual = {
+                monto: 21.99,
+                titulo: "Plan Premium Anual - Nexus AI Chat",
+                alias: "Stack.740.autor.mp",
+                plan: "anual"
+            };
+            transferModal.classList.add('active');
+            document.querySelector('.plan-amount').value = `$${planAnual.monto}`;
+        });
+    
+        // Selección de método de pago
+        const paymentMethods = document.querySelectorAll('.payment-method-select');
+    
+        paymentMethods.forEach(method => {
+            method.addEventListener('click', () => {
+                const paymentType = method.getAttribute('data-method');
+    
+                if (paymentType === 'mercadopago' || paymentType === 'card') {
+                    window.location.href = 'https://mpago.la/1GyQiUy';
+                } else if (paymentType === 'transfer') {
+                    transferModal.classList.add('active');
+                }
+            });
+        });
+    
+        // Copiar detalles de transferencia
+        const copyDetailsBtn = document.getElementById('copy-details');
+    
+        copyDetailsBtn.addEventListener('click', () => {
+            const bankDetails = `
+                Alias para transferencia: Stack.740.autor.mp
+                Tipo de transferencia: Transferencia inmediata
+                Monto a transferir: $1.99
+                Concepto/Referencia: Premium Nexus + [Tu Email]
+            `;
+    
+            navigator.clipboard.writeText(bankDetails.trim())
+                .then(() => {
+                    copyDetailsBtn.innerHTML = '<i class="fas fa-check"></i> Copiado';
+                    setTimeout(() => {
+                        copyDetailsBtn.innerHTML = '<i class="fas fa-copy"></i> Copiar detalles';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Error al copiar: ', err);
+                });
+        });
+    
+        // ================================
+        // 🔐 Verificar si el usuario es premium
+        // ================================
+        const emailUsuario = localStorage.getItem('nexusEmail'); // almacenado previamente
+    
+        if (emailUsuario) {
+            fetch(`http://localhost:3000/api/es-premium?email=${encodeURIComponent(emailUsuario)}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.premium) activarFuncionesPremium();
+                });
+        }
+    
+        function activarFuncionesPremium() {
+            document.body.classList.add('usuario-premium');
+            const premiumNotice = document.querySelector('.premium-notice');
+            if (premiumNotice) premiumNotice.remove();
+            console.log('✅ Usuario premium detectado');
+        }
+    </script>
+    
+
+</body></html>
